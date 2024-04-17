@@ -18,6 +18,10 @@ class Gemini(LC):
 
     def ask(self, question: str) -> str:
         try:
+            if self.first_ask == True:
+                self.first_ask = False
+                return self.chain.predict(human_input=[self.system_prompt + question])
+            
             return self.chain.predict(human_input=[question])
         except Exception as e:
             print('An error has occurred. please try again.', e)

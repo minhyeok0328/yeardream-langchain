@@ -12,6 +12,8 @@ from langchain.chains.llm import LLMChain
 
 class LC(ABC):
     def __init__(self, system_prompt: str, variable_name: str, memory_key: str):
+        self.system_prompt = system_prompt
+        self.first_ask = True
         self.memory = ConversationBufferMemory(memory_key=memory_key, return_messages=True)
         self.prompt = ChatPromptTemplate.from_messages(
             [
