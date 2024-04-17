@@ -6,7 +6,7 @@ from langchain_core.vectorstores import VectorStoreRetriever
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
 class VectorDB():
-    def __init__(self) -> None:
+    def __init__(self):
         """
         생성자. Chroma, 문서 리스트, VectorStoreRetriever 를 멤버변수로 선언합니다.
         """
