@@ -1,36 +1,46 @@
-import os
-from langchain_community.document_loaders import WebBaseLoader
+from typing import Literal
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_core.prompts import SystemMessagePromptTemplate, ChatPromptTemplate, MessagesPlaceholder
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma
+from langchain.prompts import (
+    ChatPromptTemplate,
+    MessagesPlaceholder,
+    SystemMessagePromptTemplate,
+    HumanMessagePromptTemplate,
+    PromptTemplate,
+)
+from langchain.memory import ConversationBufferMemory
+from langchain.chains.llm import LLMChain
+
+VARIABLE_NAME = 'chat_history'
+CHAT_KEY = 'human_input'
 
 class Chat:
-    def __init__(self, model: str = 'gemini-pro', temperature: float = 0.0, system_prompt: str = ''):
-        self.chat = ChatGoogleGenerativeAI(
+    def __init__(self, system_prompt: str = '', model: str = 'gemini-pro', temperature: float = 0.0):
+        memory = ConversationBufferMemory(memory_key=VARIABLE_NAME, return_messages=True, ai_prefix='Gemini')
+        prompt = ChatPromptTemplate.from_messages(
+            [
+                SystemMessage(
+                    content='You are a QA Bot that creates answers based on documentation data you collect.'
+                ),
+                MessagesPlaceholder(
+                    variable_name=VARIABLE_NAME
+                ),
+                HumanMessagePromptTemplate.from_template(
+                    '{human_input}'
+                )
+            ]
+        )
+        llm = ChatGoogleGenerativeAI(
             model = model,
             temperature = temperature
         )
-        self.system_prompt = ChatPromptTemplate.from_messages(
-            [
-                ('system', system_prompt),
-                MessagesPlaceholder(variable_name='message')
-            ]
+        self.llm_chain = LLMChain(
+            llm=llm,
+            prompt=prompt,
+            verbose=True,
+            memory=memory
         )
 
-    def generate_response(self, question):
-        chain = self.system_prompt | self.chat
-        response = chain.invoke({
-            'message': [HumanMessage(question)]
-        })
-
-        return response.content
-
-
-# chat = Chat()
-# prompt = input('Prompt: ')
-# print(chat.question(prompt))
-
- 
+    def generate_response(self, question: str) -> str:
+        response = self.llm_chain.predict(human_input=question)
+        return response
