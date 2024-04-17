@@ -6,10 +6,10 @@
 프로젝트 최상위 경로에서
 
 1. docker build -t yeardream-langchain .
-> Dockerfile에 있는 대로 docker 이미지를 **yeardream-langchain** 이라는 이름이로 새로 생성
+> Dockerfile에 있는 대로 docker 이미지를 **yeardream-langchain** 이라는 이름으로 새로 생성
 2. docker-compose up -d
 > docker-compose.yml에 있는 설정대로 docker container를 실행한다
-> 이후 vscode로 접속해서 **/app** 경로에서 개발하면 됩니다
+> 이후 vscode로 접속한 뒤 파일탐색창(Explorer)에서 Open Folder 버튼을 누른 뒤에 **/app** 경로를 열고난 뒤 개발하면 됩니다
 
 ## miniconda 환경 세팅
 프로젝트 최상위 경로에서
