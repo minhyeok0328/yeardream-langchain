@@ -3,7 +3,7 @@ from core.chat import Chat
 
 def main():
     if 'GOOGLE_API_KEY' not in os.environ:
-        os.environ['GOOGLE_API_KEY'] = 'AIzaSyBoYe5WvsNjT7iiUIZCYtKNvg5_L5yIsCc'
+        os.environ['GOOGLE_API_KEY'] = 'API_KEY'
 
     chat = Chat()
     while True:
