@@ -1,2 +1,3 @@
 from .chat import Chat
-from . import vector_db
+from .vector_db import VectorDB
+from .gemini import Gemini
