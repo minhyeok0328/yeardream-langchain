@@ -1,4 +1,5 @@
-from core import Chat, Gemini 
+from core import Chat
+from core.models import Gemini
 from core.config import SYSTEM_PROMPT, API_KEY
 
 def excute_chatting():
