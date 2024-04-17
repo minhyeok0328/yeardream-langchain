@@ -15,7 +15,7 @@ VARIABLE_NAME = 'chat_history'
 CHAT_KEY = 'human_input'
 
 class Chat:
-    def __init__(self, system_prompt: str = '', model: str = 'gemini-pro', temperature: float = 0.0):
+    def __init__(self, system_prompt: str = '', model: str = 'models/gemini-1.5-pro-latest', temperature: float = 0.0):
         memory = ConversationBufferMemory(memory_key=VARIABLE_NAME, return_messages=True, ai_prefix='Gemini')
         prompt = ChatPromptTemplate.from_messages(
             [

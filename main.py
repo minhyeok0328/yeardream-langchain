@@ -6,9 +6,15 @@ def main():
         os.environ['GOOGLE_API_KEY'] = 'AIzaSyBoYe5WvsNjT7iiUIZCYtKNvg5_L5yIsCc'
 
     chat = Chat()
-    prompt = input('Prompt here: ')
-    response = chat.generate_response(prompt)
-    print(response)
+    while True:
+        prompt = input('Prompt here: ')
+        response = chat.generate_response(prompt)
+
+        if prompt.lower() in ['exit', 'bye']:
+            print('Bye~~')
+            break
+
+        print(response)
 
 if __name__ == "__main__":
     main()
