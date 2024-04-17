@@ -1,5 +1,3 @@
-from typing import Type
-
 class Chat:
     def __init__(self, model, system_prompt: str, api_key: str, temperature: float = 0.0):
         self.model = model(
