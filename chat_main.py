@@ -5,7 +5,8 @@ def main():
     if 'GOOGLE_API_KEY' not in os.environ:
         os.environ['GOOGLE_API_KEY'] = 'API_KEY'
 
-    chat = Chat()
+    chat = Chat('You are a QA Bot that creates answers based on documentation data you collect.')
+
     while True:
         prompt = input('Prompt here: ')
         response = chat.generate_response(prompt)
