@@ -10,7 +10,7 @@ from langchain_chroma import Chroma
 if 'GOOGLE_API_KEY' not in os.environ:
     os.environ['GOOGLE_API_KEY'] = 'API_KEY'
 
-chat = ChatGoogleGenerativeAI(model='gemini-pro', temperacute=0)
+chat = ChatGoogleGenerativeAI(model='gemini-pro', temperature=0)
 prompt = ChatPromptTemplate.from_messages(
     [
         ('system', 'Answer only yes or no.'),
