@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  langchain:
+    image: yeardream-langchain:latest
+    container_name: langchain
+    build: .
+    # ports:
+    #   - "8888:8888"
+    volumes:
+      - ./:/app
+    networks:
+      - default
+    restart: always
+
+networks:
+  default:

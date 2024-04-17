@@ -1,0 +1,21 @@
+name: yeardream-langchain
+channels:
+  - defaults
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - selenium
+  - requests
+  - bs4
+  - flask
+  - ipykernel
+  - pip:
+    - langchain
+    - langchain-google-genai
+    - langchain-community
+    - langchainhub
+    - langchain-chroma
