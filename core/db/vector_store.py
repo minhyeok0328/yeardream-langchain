@@ -1,5 +1,4 @@
 from typing import List
-from langchain_text_splitters import CharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 from langchain_core.documents.base import Document
