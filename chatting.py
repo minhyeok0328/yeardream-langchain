@@ -7,10 +7,10 @@ def excute_chatting():
 
     while True:
         prompt = input('Prompt here: ')
-        response = chat.ask(prompt)
 
         if prompt.lower() in ['exit', 'bye']:
             print('Bye~~')
             break
 
+        response = chat.ask(prompt)
         print(response)
