@@ -1,7 +1,7 @@
 from typing import List
 from langchain.document_loaders.pdf import PyPDFLoader
 from langchain_core.documents.base import Document
-
+ 
 class Crawler:
     def __init__(self, pdf_file_path: str):
         self.pdf_file_path = pdf_file_path

@@ -1,4 +1,4 @@
-from core import Chat, Crawler
+from core import Chat, Crawler, Retriever
 from core.models import Gemini
 from core.config import SYSTEM_PROMPT
 
@@ -8,7 +8,12 @@ def excute_chatting():
     crawler = Crawler(pdf_file_path=PDF_PATH)
     content = crawler.get_pdf_document()
 
-    chat = Chat(model=Gemini, system_prompt=SYSTEM_PROMPT['QA'], content=content)
+    retriever = Retriever(content=content)
+    chat = Chat(
+        model=Gemini,
+        system_prompt=SYSTEM_PROMPT['QA'],
+        retriever=retriever
+    )
 
     while True:
         prompt = input('Prompt here: ')

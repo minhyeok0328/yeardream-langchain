@@ -16,9 +16,9 @@ class VectorStore:
     def add_document(self, new_document: List[Document]):
         self.__db.add_documents(new_document)
 
-    def query(self, text: str) -> str:
+    def query(self, text: str, k: int = 1) -> str:
         try:
-            result = self.__db.similarity_search(query=text, k=self.k)
+            result = self.__db.similarity_search(query=text, k=k)
             return result[0].page_content
         except Exception as e:
             print(e)
