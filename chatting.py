@@ -6,7 +6,7 @@ from core.config import SYSTEM_PROMPT
 
 PDF_PATH = './files/Chain-of-Thought-prompting.pdf'
 
-def excute_chatting():
+def execute_chatting():
     logger = ChatLogger()
     crawler = Crawler(pdf_file_path=PDF_PATH)
     text_splitter = TextSplitter()
