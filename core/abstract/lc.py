@@ -40,5 +40,5 @@ class LC(ABC):
         )
 
     @abstractmethod
-    def ask(self, question: str) -> str:
+    def generate_response(self, question: str) -> str:
         pass
