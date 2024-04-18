@@ -19,3 +19,4 @@ dependencies:
     - langchain-community
     - langchainhub
     - langchain-chroma
+    - PyPDF2
