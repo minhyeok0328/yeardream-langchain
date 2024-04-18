@@ -1,9 +1,9 @@
 import datetime
 import os
 
-FOLDER_NAME = 'log'
+FOLDER_NAME = '../log'
 
-class ChatLogger():
+class ChatLogger:
     def __init__(self):
         """
         채팅 로그를 저장할 이름을 생성합니다.
@@ -19,6 +19,6 @@ class ChatLogger():
         """
         사용자 입력을 로그 파일에 저장하는 함수 입니다.
         """
-        with open(self.filepath, "+a") as f:
+        with open(self.filepath, 'a') as f:
             input_str = f"{self.timestamp} | {'User:' if is_user is True else 'AI:'} {input} \n"
             f.write(input_str)
