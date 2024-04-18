@@ -6,7 +6,6 @@ from langchain_core.documents.base import Document
 
 MODEL_NAME = 'models/embedding-001'
 
-# 웹 크롤링 대신 pdf를 불러와서 사용
 class VectorStore:
     def __init__(self, chunk_size: int = 500, k: int = 1, content: List[Document] = []):
         self.k = k
