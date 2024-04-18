@@ -6,18 +6,18 @@ CHAT_KEY = 'human_input'
 MODEL_NAME = 'models/gemini-1.5-pro-latest'
 
 class Gemini(LC):
-    def __init__(self, system_prompt: str, api_key: str, temperature: float):
+    def __init__(self, system_prompt: str, temperature: float):
         super().__init__(system_prompt, CHAT_KEY, MEMORY_KEY)
 
         llm = ChatGoogleGenerativeAI(
             model = MODEL_NAME,
-            temperature = temperature,
-            google_api_key=api_key
+            temperature = temperature
         )
         self.chain = self._set_chain(llm)
 
-    def ask(self, question: str) -> str:
+    def generate_response(self, question: str) -> str:
         try:
+            # 왠지 모르게 첫 질문일 때만 system prompt가 적용되지 않아서 강제로 적용 
             if self.first_ask == True:
                 self.first_ask = False
                 return self.chain.predict(human_input=[self.system_prompt + question])
