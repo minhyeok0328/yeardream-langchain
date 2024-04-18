@@ -1,4 +1,4 @@
-from typing import Iterable, List
+from typing import List
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
@@ -11,12 +11,19 @@ class VectorStore:
         self.k = k
         self.text_splitter = CharacterTextSplitter(chunk_size=chunk_size)
         new_document = self.text_splitter.split_documents(content)
-        self.__db = Chroma.from_documents(new_document, GoogleGenerativeAIEmbeddings(model=MODEL_NAME))
 
-    def add_document(self, new_document: Iterable[Document]):
-        document = self.text_splitter.split_documents(new_document)
-        self.__db.add_documents(document)
+        self.__db = Chroma.from_documents(
+            documents=new_document,
+            embedding=GoogleGenerativeAIEmbeddings(model=MODEL_NAME)
+        )
+
+    def add_document(self, new_document: List[Document]):
+        split_document = self.text_splitter.split_documents(new_document)
+        self.__db.add_documents(split_document)
 
     def query(self, text: str) -> str:
-        result = self.__db.similarity_search(query=text, k=self.k)
-        return result[0].page_content
+        try:
+            result = self.__db.similarity_search(query=text, k=self.k)
+            return result[0].page_content
+        except Exception as e:
+            print(e)
