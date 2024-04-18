@@ -1,61 +1,33 @@
-# named crawler but 'pdf scraper'
-#import pdfminer.six
+import PyPDF2
 from pdfminer.high_level import extract_text
 
-text = extract_text("2305.15323.pdf")
-print(text)
+# PDF 경로
+pdf_file_path = 'Chain-of-Thought-prompting.pdf'
 
+def pdf_read():        
+    with open(pdf_file_path, 'rb') as file:
+        reader = PyPDF2.PdfFileReader(file)
+        
+        # 페이지 확인
+        num_pages = reader.numPages
+        
+        # 텍스트를 추출, 리스트 저장
+        text_list = []
+        for page_number in range(num_pages):
+            page = reader.getPage(page_number)
+            text = page.extractText()
+            text_list.append(text)
+        
+        # 텍스트 출력 또는 원하는 정보 크롤링
+        for text in text_list:
+            # 예시: 특정 텍스트가 있는 부분을 찾아 출력
+            if 'important information' in text:
+                print(text)
+
+pdf_read()
 '''
-import urllib.request
-from bs4 import BeautifulSoup
+def extract_txt(pdf_file_path):
+    text = extract_text(pdf_file_path)
+    print(text)
 
-# weather
-url = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp"
-res = urllib.request.urlopen(url)
-
-soup = BeautifulSoup(res, 'html.parser')
-title = soup.find('title').string
-wf = soup.find('wf').string
-
-print(title)
-print('-'*20)
-print(wf)
-'''
-
-'''
-import os
-# by instructor Kim
-# this is for crawling
-
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
-from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_core.prompts import SystemMessagePromptTemplate, ChatPromptTemplate, MessagesPlaceholder
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma
-
-if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = "AIzaSyB4LUMIRNaneUx29NVSIlL6cliRy14CrdQ"
-
-# web document를 가져오는 함수.
-loader = WebBaseLoader("https://docs.smith.langchain.com/overview")
-text = loader.load() # raw text
-
-# 500글자씩 자르는데, 안겹치게 자름.
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=0)
-splits = text_splitter.split_documents(text)
-#print(len(splits))
-
-# split 해놓은 텍스트 데이터를 embedding한 VectorDB를 생성
-vectordb = Chroma.from_documents(documents=splits,
-                                 embedding=GoogleGenerativeAIEmbeddings(model="models/embedding-001"))
-
-# 사용자 입력(질문)과 비교해서 가까운 K개의 결과 찾기
-retriever = vectordb.as_retriever(k=1)
-
-# 검색
-input_prompt = input("User : ")
-response = retriever.invoke(input=input_prompt)
-print(response)
-'''
+def '''
