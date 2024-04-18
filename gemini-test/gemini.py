@@ -7,19 +7,23 @@ from langchain_core.prompts import SystemMessagePromptTemplate, ChatPromptTempla
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
+# API key
 if 'GOOGLE_API_KEY' not in os.environ:
-    os.environ['GOOGLE_API_KEY'] = 'API_KEY'
+    os.environ['GOOGLE_API_KEY'] = 'AIzaSyDz8xBhSaEbgFenLa7ZU6YXhFMG51SGIZQ'
 
-chat = ChatGoogleGenerativeAI(model='gemini-pro', temperature=0)
+# 'system'. 'human', 'ai' ?
+chat = ChatGoogleGenerativeAI(model='gemini-1.5-pro-latest', temperature=1.0)
 prompt = ChatPromptTemplate.from_messages(
     [
-        ('system', 'Answer only yes or no.'),
+        ('system', "Answer only 'yes' or 'no'. Don't add any explanation about your answer."),
         MessagesPlaceholder(variable_name='message')
     ]
 )
 
 chain = prompt | chat 
+input_prompt = input("data call with Gemini, Done.")
 response = chain.invoke(
-    {'message': [HumanMessage('Is apple fruit?')]}
+    {'message': [HumanMessage(input_prompt)]}
 )
 print(response.content)
+                                   
