@@ -11,16 +11,23 @@ services:
       - ./:/app
     networks:
       - default
-    restart: always
+    restart: unless-stopped
 
-  sqlite:
-    image: nouchka/sqlite3:latest
+  sqlitebrowser:
+    image: lscr.io/linuxserver/sqlitebrowser:latest
     container_name: sqlite
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Seoul
     volumes:
-      - ./database:/var/lib/sqlite
+      - ./database:/config
     networks:
       - default
-    restart: always
+    ports:
+      - 3000:3000
+      - 3001:3001
+    restart: unless-stopped
 
 networks:
   default:
