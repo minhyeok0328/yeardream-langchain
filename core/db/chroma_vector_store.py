@@ -2,11 +2,14 @@ from typing import List
 from langchain_chroma import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 from langchain_core.documents.base import Document
+from core.abstract import VS
 
 MODEL_NAME = 'models/embedding-001'
 
-class VectorStore:
+class ChromaVectorStore(VS):
     def __init__(self, document: List[Document] = []):
+        super().__init__(document=document)
+
         self.__db = Chroma.from_documents(
             documents=document,
             embedding=GoogleGenerativeAIEmbeddings(model=MODEL_NAME)
