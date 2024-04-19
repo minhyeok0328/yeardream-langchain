@@ -19,7 +19,36 @@
 
 ## miniconda 환경 세팅
 프로젝트 최상위 경로에서
-
 1. conda env create -f environment.yml
 > environment.yml에 필요한 것들을 정의해 놓고 위 명령어로 한 번에 설치합니다.
 2. conda activate yeardream-langchain
+
+# 프로젝트 설명
+## 프로젝트 폴더 트리
+root
+- core
+  - abstract
+  - config
+  - db
+  - models
+  - utils
+  __init__.py
+  chat.py
+  chat_logger.py
+  cawler.py
+  retriever.py
+files
+  - chain-of-thought-prompting.pdf
+.gitignore
+Dockerfile
+README.md
+chatting.py
+docker-compose.yml
+environment.yml
+main.py
+
+## 각 폴더/파일 (역할) 설명
+
+# 주요 class 설명
+
+# 사용방법
