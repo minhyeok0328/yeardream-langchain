@@ -1,6 +1,9 @@
 # 프로젝트 목표
  LangChain을 이용해서 Knowledge Base를 구축하고, 이를 응용한 QA Engine을 개발
-
+## 구성
+- 개발 언어는 Python을 사용합니다
+- Gemini API를 통해 LLM 답변을 받습니다. Gemini만 사용합니다
+  
 #  프로젝트 세팅
 
  miniconda와 docker 환경설정을 하는 방법
