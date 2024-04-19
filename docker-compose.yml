@@ -13,5 +13,14 @@ services:
       - default
     restart: always
 
+  sqlite:
+    image: nouchka/sqlite3:latest
+    container_name: sqlite
+    volumes:
+      - ./database:/var/lib/sqlite
+    networks:
+      - default
+    restart: always
+
 networks:
   default:
