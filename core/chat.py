@@ -15,4 +15,4 @@ class Chat:
     def ask(self, input_prompt: str) -> str:
         knowledge_content = self.retriever.find_related_knowledge(input_prompt)
 
-        return self.model.generate_response(knowledge_content + input_prompt)
+        return self.model.generate_response(f'{knowledge_content}\n {input_prompt}')
