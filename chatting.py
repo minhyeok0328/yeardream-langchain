@@ -16,7 +16,7 @@ def execute_chatting():
     )
     chat = Chat(
         model=Gemini,
-        system_prompt=SYSTEM_PROMPT['YES_OR_NO'],
+        system_prompt=SYSTEM_PROMPT['QA'],
         retriever=retriever
     )
 
