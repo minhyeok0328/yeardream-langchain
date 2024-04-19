@@ -19,3 +19,6 @@ dependencies:
     - langchain-community
     - langchainhub
     - langchain-chroma
+    - pypdf
+    - sentence-transformers
+    - sqlite-vss

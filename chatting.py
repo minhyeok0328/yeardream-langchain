@@ -1,10 +1,12 @@
+import os
 from core import Chat, Crawler, Retriever, ChatLogger
-from core.db import VectorStore
+from core.db import VectorStore, SqliteStore
 from core.utils import TextSplitter
 from core.models import Gemini
 from core.config import SYSTEM_PROMPT
 
-PDF_PATH = './files/Chain-of-Thought-prompting.pdf'
+PDF_PATH = os.path.abspath('./files/Chain-of-Thought-prompting.pdf')
+SQL_FILE_PATH = os.path.abspath('./sql/create_table.sql')
 
 def execute_chatting():
     logger = ChatLogger()
@@ -12,7 +14,7 @@ def execute_chatting():
     text_splitter = TextSplitter()
     content = crawler.get_pdf_document()
     retriever = Retriever(
-        db=VectorStore(document=text_splitter.split(content))
+        db=SqliteStore(document=text_splitter.split(content))
     )
     chat = Chat(
         model=Gemini,
