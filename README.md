@@ -26,52 +26,21 @@
 # 프로젝트 설명
 ## 프로젝트 폴더 트리
 📦core
- ┣ 📂__pycache__
- ┃ ┣ 📜__init__.cpython-310.pyc
- ┃ ┣ 📜__init__.cpython-311.pyc
- ┃ ┣ 📜chat.cpython-311.pyc
- ┃ ┣ 📜chat_logger.cpython-311.pyc
- ┃ ┣ 📜crawler.cpython-311.pyc
- ┃ ┣ 📜gemini.cpython-311.pyc
- ┃ ┣ 📜retriever.cpython-310.pyc
- ┃ ┣ 📜retriever.cpython-311.pyc
- ┃ ┗ 📜vector_db.cpython-311.pyc
  ┣ 📂abstract
- ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜__init__.cpython-311.pyc
- ┃ ┃ ┣ 📜base_model.cpython-311.pyc
- ┃ ┃ ┗ 📜lc.cpython-311.pyc
  ┃ ┣ 📜__init__.py
  ┃ ┗ 📜lc.py
  ┣ 📂config
- ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜__init__.cpython-311.pyc
- ┃ ┃ ┣ 📜api_key.cpython-311.pyc
- ┃ ┃ ┗ 📜prompt.cpython-311.pyc
  ┃ ┣ 📜__init__.py
  ┃ ┣ 📜api_key.py
  ┃ ┗ 📜prompt.py
  ┣ 📂db
- ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜__init__.cpython-310.pyc
- ┃ ┃ ┣ 📜__init__.cpython-311.pyc
- ┃ ┃ ┣ 📜sqlite_store.cpython-311.pyc
- ┃ ┃ ┣ 📜vector.cpython-311.pyc
- ┃ ┃ ┣ 📜vector_store.cpython-310.pyc
- ┃ ┃ ┗ 📜vector_store.cpython-311.pyc
  ┃ ┣ 📜__init__.py
  ┃ ┣ 📜sqlite_store.py
  ┃ ┗ 📜vector_store.py
  ┣ 📂models
- ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜__init__.cpython-311.pyc
- ┃ ┃ ┗ 📜gemini.cpython-311.pyc
  ┃ ┣ 📜__init__.py
  ┃ ┗ 📜gemini.py
  ┣ 📂utils
- ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜__init__.cpython-311.pyc
- ┃ ┃ ┗ 📜text_splitter.cpython-311.pyc
  ┃ ┣ 📜__init__.py
  ┃ ┗ 📜text_splitter.py
  ┣ 📜__init__.py
