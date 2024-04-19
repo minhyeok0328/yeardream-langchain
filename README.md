@@ -25,7 +25,8 @@
 
 # 프로젝트 설명
 ## 프로젝트 폴더 트리
-📦core<br>
+```
+📦core
  ┣ 📂abstract
  ┃ ┣ 📜__init__.py
  ┃ ┗ 📜lc.py
@@ -57,7 +58,7 @@
 📜docker-compose.yml
 📜environment.yml
 📜main.py
-
+```
  ## 각 폴더/파일 (역할) 설명
     environment.yml: miniconda 환경 세팅 파일 입니다.
     docker-compose.yml, Dockerfile: 도커 환경 세팅 파일 입니다.
