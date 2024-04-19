@@ -16,7 +16,7 @@ def execute_chatting():
     )
     chat = Chat(
         model=Gemini,
-        system_prompt=SYSTEM_PROMPT['YES_OR_NO'],
+        system_prompt=SYSTEM_PROMPT['QA'],
         retriever=retriever
     )
 
@@ -30,4 +30,5 @@ def execute_chatting():
         logger.save_log(input=prompt)
         response = chat.ask(prompt)
         logger.save_log(input=response, is_user=False)
+
         print(response)

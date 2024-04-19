@@ -1,0 +1,5 @@
+CREATE TABLE documents (
+  document_id INTEGER PRIMARY KEY,
+  text TEXT NOT NULL,
+  extracted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

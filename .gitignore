@@ -164,3 +164,6 @@ log/
 
 # mysql volume mount folder
 database/
+
+# sqlite db file
+*.db
