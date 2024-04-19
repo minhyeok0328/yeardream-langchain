@@ -1,23 +1,23 @@
-from typing import Iterable, List
-from langchain_text_splitters import CharacterTextSplitter
+from typing import List
 from langchain_chroma import Chroma
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 from langchain_core.documents.base import Document
 
 MODEL_NAME = 'models/embedding-001'
 
-# 웹 크롤링 대신 pdf를 불러와서 사용
 class VectorStore:
-    def __init__(self, chunk_size: int = 500, k: int = 1, content: List[Document] = []):
-        self.k = k
-        self.text_splitter = CharacterTextSplitter(chunk_size=chunk_size)
-        new_document = self.text_splitter.split_documents(content)
-        self.__db = Chroma.from_documents(new_document, GoogleGenerativeAIEmbeddings(model=MODEL_NAME))
+    def __init__(self, document: List[Document] = []):
+        self.__db = Chroma.from_documents(
+            documents=document,
+            embedding=GoogleGenerativeAIEmbeddings(model=MODEL_NAME)
+        )
 
-    def add_document(self, new_document: Iterable[Document]):
-        document = self.text_splitter.split_documents(new_document)
-        self.__db.add_documents(document)
+    def add_document(self, new_document: List[Document]):
+        self.__db.add_documents(new_document)
 
-    def query(self, text: str) -> str:
-        result = self.__db.similarity_search(query=text, k=self.k)
-        return result[0].page_content
+    def query(self, text: str, k: int = 1) -> str:
+        try:
+            result = self.__db.similarity_search(query=text, k=k)
+            return result[0].page_content
+        except Exception as e:
+            print(e)
