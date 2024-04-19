@@ -28,7 +28,7 @@ class ChromaVectorStore:
 class FaissVectorStore:
     def __init__(self, document:List[Document] = []):
         self.__db = FAISS.from_documents(documents=document, 
-                                         embedding=HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5"))
+                                         embedding=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2"))
 
     def add_document(self, new_document:List[Document]):
         self.__db.add_documents(new_document)
