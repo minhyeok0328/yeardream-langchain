@@ -15,7 +15,7 @@ class VectorStore:
     def add_document(self, new_document: List[Document]):
         self.__db.add_documents(new_document)
 
-    def query(self, text: str, k: int = 1) -> str:
+    def query(self, text: str, k: int = 4) -> str:
         try:
             result = self.__db.similarity_search(query=text, k=k)
             return result[0].page_content
