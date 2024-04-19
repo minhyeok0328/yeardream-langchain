@@ -25,7 +25,7 @@
 
 # 프로젝트 설명
 ## 프로젝트 폴더 트리
-📦core
+📦core<br>
  ┣ 📂abstract
  ┃ ┣ 📜__init__.py
  ┃ ┗ 📜lc.py
