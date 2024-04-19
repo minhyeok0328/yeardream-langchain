@@ -19,3 +19,5 @@ dependencies:
     - langchain-community
     - langchainhub
     - langchain-chroma
+    - faiss-cpu
+    - sentence-transformers

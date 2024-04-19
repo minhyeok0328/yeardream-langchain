@@ -1,5 +1,5 @@
 from core import Chat, Crawler, Retriever, ChatLogger
-from core.db import VectorStore
+from core.db import VectorStore, ChromaVectorStore, FaissVectorStore
 from core.utils import TextSplitter
 from core.models import Gemini
 from core.config import SYSTEM_PROMPT
@@ -12,7 +12,7 @@ def execute_chatting():
     text_splitter = TextSplitter()
     content = crawler.get_pdf_document()
     retriever = Retriever(
-        db=VectorStore(document=text_splitter.split(content))
+        db=VectorStore(db=FaissVectorStore, document=text_splitter.split(content))
     )
     chat = Chat(
         model=Gemini,
