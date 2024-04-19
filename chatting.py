@@ -1,7 +1,7 @@
 from core import Chat, Crawler, Retriever, ChatLogger
-from core.db import VectorStore, ChromaVectorStore, FaissVectorStore
 from core.utils import TextSplitter
 from core.models import Gemini
+from core.db import ChromaVectorStore, FaissVectorStore
 from core.config import SYSTEM_PROMPT
 
 PDF_PATH = './files/Chain-of-Thought-prompting.pdf'
@@ -12,7 +12,7 @@ def execute_chatting():
     text_splitter = TextSplitter()
     content = crawler.get_pdf_document()
     retriever = Retriever(
-        db=VectorStore(db=FaissVectorStore, document=text_splitter.split(content))
+        db=ChromaVectorStore(document=text_splitter.split(content))
     )
     chat = Chat(
         model=Gemini,

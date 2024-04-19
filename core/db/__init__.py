@@ -1,3 +1,2 @@
-from .vector_store import VectorStore
-from .vector_store import ChromaVectorStore
-from .vector_store import FaissVectorStore
+from .chroma_vector_store import ChromaVectorStore
+from .faiss_vector_store import FaissVectorStore
